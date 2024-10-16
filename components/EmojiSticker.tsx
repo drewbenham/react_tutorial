@@ -1,10 +1,16 @@
-import { View } from 'react-native';
+import { ImageRequireSource, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
+export type ImageSourcePropType = ImageURISource | ImageURISource[] | ImageRequireSource;
+
+export interface ImageURISource {
+    uri?: string | undefined;
+}
+
 type Props = {
     imageSize: number;
-    stickerSource: string;
+    stickerSource?: string;
 };
 
 export default function EmojiSticker({ imageSize, stickerSource }: Props) {
@@ -50,7 +56,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
             <Animated.View style={[containerStyle, { top: -350 }]}>
                 <GestureDetector gesture={doubleTap}>
                     <Animated.Image 
-                        source={stickerSource}
+                        source={{uri: stickerSource}}
                         resizeMode="contain"
                         style={[imageStyle, { width: imageSize, height: imageSize }]} 
                     />
