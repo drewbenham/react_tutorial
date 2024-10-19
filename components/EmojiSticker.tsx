@@ -1,12 +1,6 @@
-import { ImageRequireSource, View } from 'react-native';
+import { ImageSourcePropType, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
-
-export type ImageSourcePropType = ImageURISource | ImageURISource[] | ImageRequireSource;
-
-export interface ImageURISource {
-    uri?: string | undefined;
-}
 
 type Props = {
     imageSize: number;
